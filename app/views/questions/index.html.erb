@@ -1,0 +1,21 @@
+<h1>Rescue Mission</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Top Questions</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if !@questions.nil? %>
+      <% @questions.each do |question| %>
+        <tr>
+          <td><%= link_to question.title, question %></td>
+          <td><%= question.created_at %>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= link_to 'Ask Question', new_question_path %>

@@ -1,0 +1,15 @@
+<h2>New Question:</h2>
+
+<% if !@errors.nil? %>
+  <p><font color='magenta'><%= @errors %></font></p>
+<% end %>
+
+<%= form_for @question, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+  <%= f.text_area :title, placeholder: "Title" %><br><br>
+  <%= f.text_area :description, placeholder: "Description", size: "40x12" %></p>
+  <%= f.submit "Submit" %>
+<% end %>
+
+<br>
+
+<%= link_to 'Back to Questions', questions_path %>

@@ -1,0 +1,40 @@
+<h1>Rescue Mission</h1>
+
+<% if flash.any? %>
+  <div class="flash">
+    <div class="container">
+      <font color='magenta'><%= flash[:notice] %></font>
+    </div>
+  </div>
+<% end %>
+
+<table>
+  <tbody>
+    <h3><%= @question.title %></h3>
+      <p><%= @question.description %></p>
+      <p>Created At: <%= @question.created_at %></p>
+  </tbody>
+</table>
+<%= link_to "Edit Question", edit_question_path(@question) %>
+<br>
+<%= link_to "Delete Question", @question, method: :delete,
+                                 data: { confirm: "Are you sure you want to delete this question?" } %>
+<br>
+
+  <% if !@answers.empty? %>
+    <h3>Answers:</h3>
+    <ul>
+      <% @answers.each do |a| %>
+        <li><%= a.description %></li>
+      <% end %>
+    <% end %>
+</ul>
+
+<h5>Your Answer:</h5>
+<%= form_for [@question, @answer] do |f| %>
+  <%= f.text_area :description, placeholder: "Description", size: "40x12" %></p>
+  <%= f.submit "Submit" %>
+<% end %>
+<br>
+<br>
+<%= link_to 'Back to Questions', questions_path %>

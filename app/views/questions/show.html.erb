@@ -10,8 +10,8 @@
 
 <table>
   <tbody>
-    <h3><%= @question.title %></h3>
-      <p><%= @question.description %></p>
+    <h3><%= markdown(@question.title) %></h3>
+      <p><%= markdown(@question.description) %></p>
       <p>Created At: <%= @question.created_at %></p>
   </tbody>
 </table>
@@ -25,7 +25,7 @@
     <h3>Answers:</h3>
     <ul>
       <% @answers.each do |a| %>
-        <li><%= a.description %></li>
+        <li><%= markdown(a.description) %></li>
       <% end %>
     <% end %>
 </ul>
@@ -33,6 +33,7 @@
 <h5>Your Answer:</h5>
 <%= form_for [@question, @answer] do |f| %>
   <%= f.text_area :description, placeholder: "Description", size: "40x12" %></p>
+
   <%= f.submit "Submit" %>
 <% end %>
 <br>

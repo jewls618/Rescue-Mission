@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   end
 
   resources :answers, only: [:show]
+
+  get 'answers/bestanswer', to: 'answer#bestanswer'
 end
